@@ -10,6 +10,9 @@ public class GameController {
 
     @GetMapping("/play")
     public Game play(@RequestParam String choice) {
+        if (choice == null || choice.isEmpty()) {
+            throw new IllegalArgumentException("Choice parameter is required");
+        }
         return new Game(choice);
     }
 }
